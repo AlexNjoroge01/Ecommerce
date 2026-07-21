@@ -4,126 +4,241 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+  Atlas Labs E-Store — Design System (see Design.md)
+  Palette leans cool/glacial. Cyan is the default interactive color; cobalt and
+  mint stay rare so they keep their weight. Buttons are pills. Data is mono.
+*/
+
 @theme inline {
-    --font-heading: var(--font-sans);
-    --font-sans: var(--font-sans);
-    --color-sidebar-ring: var(--sidebar-ring);
-    --color-sidebar-border: var(--sidebar-border);
-    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-    --color-sidebar-accent: var(--sidebar-accent);
-    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-    --color-sidebar-primary: var(--sidebar-primary);
-    --color-sidebar-foreground: var(--sidebar-foreground);
-    --color-sidebar: var(--sidebar);
-    --color-chart-5: var(--chart-5);
-    --color-chart-4: var(--chart-4);
-    --color-chart-3: var(--chart-3);
-    --color-chart-2: var(--chart-2);
-    --color-chart-1: var(--chart-1);
-    --color-ring: var(--ring);
-    --color-input: var(--input);
-    --color-border: var(--border);
-    --color-destructive: var(--destructive);
-    --color-accent-foreground: var(--accent-foreground);
-    --color-accent: var(--accent);
-    --color-muted-foreground: var(--muted-foreground);
-    --color-muted: var(--muted);
-    --color-secondary-foreground: var(--secondary-foreground);
-    --color-secondary: var(--secondary);
-    --color-primary-foreground: var(--primary-foreground);
-    --color-primary: var(--primary);
-    --color-popover-foreground: var(--popover-foreground);
-    --color-popover: var(--popover);
-    --color-card-foreground: var(--card-foreground);
-    --color-card: var(--card);
-    --color-foreground: var(--foreground);
-    --color-background: var(--background);
-    --radius-sm: calc(var(--radius) * 0.6);
-    --radius-md: calc(var(--radius) * 0.8);
-    --radius-lg: var(--radius);
-    --radius-xl: calc(var(--radius) * 1.4);
-    --radius-2xl: calc(var(--radius) * 1.8);
-    --radius-3xl: calc(var(--radius) * 2.2);
-    --radius-4xl: calc(var(--radius) * 2.6);
+  /* Font roles */
+  --font-display: var(--font-display); /* Space Grotesk — headlines */
+  --font-sans: var(--font-sans); /* Inter — body / UI */
+  --font-mono: var(--font-mono); /* IBM Plex Mono — prices, SKUs, specs */
+  --font-heading: var(--font-display);
+
+  /* Atlas raw brand tokens → Tailwind color utilities (bg-frost, text-cyan, …) */
+  --color-frost: var(--frost-50);
+  --color-frost-50: var(--frost-50);
+  --color-glacier: var(--glacier-100);
+  --color-glacier-100: var(--glacier-100);
+  --color-ink: var(--ink-900);
+  --color-ink-900: var(--ink-900);
+  --color-cyan: var(--signal-cyan-500);
+  --color-signal-cyan-500: var(--signal-cyan-500);
+  --color-cobalt: var(--cobalt-600);
+  --color-cobalt-600: var(--cobalt-600);
+  --color-mint: var(--mint-400);
+  --color-mint-400: var(--mint-400);
+  --color-steel-200: var(--steel-200);
+  --color-steel-500: var(--steel-500);
+  --color-danger-500: var(--danger-500);
+
+  /* shadcn semantic mapping */
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Cool-toned elevation (Design.md §1.4) */
+  --shadow-sm: 0 1px 2px rgba(11, 27, 46, 0.06);
+  --shadow-md: 0 8px 24px rgba(11, 27, 46, 0.08);
+  --shadow-lg: 0 16px 48px rgba(20, 198, 222, 0.18);
 }
 
 :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.148 0.004 228.8);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.148 0.004 228.8);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.148 0.004 228.8);
-    --primary: oklch(0.218 0.008 223.9);
-    --primary-foreground: oklch(0.987 0.002 197.1);
-    --secondary: oklch(0.963 0.002 197.1);
-    --secondary-foreground: oklch(0.218 0.008 223.9);
-    --muted: oklch(0.963 0.002 197.1);
-    --muted-foreground: oklch(0.56 0.021 213.5);
-    --accent: oklch(0.963 0.002 197.1);
-    --accent-foreground: oklch(0.218 0.008 223.9);
-    --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.925 0.005 214.3);
-    --input: oklch(0.925 0.005 214.3);
-    --ring: oklch(0.723 0.014 214.4);
-    --chart-1: oklch(0.872 0.007 219.6);
-    --chart-2: oklch(0.56 0.021 213.5);
-    --chart-3: oklch(0.45 0.017 213.2);
-    --chart-4: oklch(0.378 0.015 216);
-    --chart-5: oklch(0.275 0.011 216.9);
-    --radius: 0.625rem;
-    --sidebar: oklch(0.987 0.002 197.1);
-    --sidebar-foreground: oklch(0.148 0.004 228.8);
-    --sidebar-primary: oklch(0.218 0.008 223.9);
-    --sidebar-primary-foreground: oklch(0.987 0.002 197.1);
-    --sidebar-accent: oklch(0.963 0.002 197.1);
-    --sidebar-accent-foreground: oklch(0.218 0.008 223.9);
-    --sidebar-border: oklch(0.925 0.005 214.3);
-    --sidebar-ring: oklch(0.723 0.014 214.4);
+  /* Atlas raw palette */
+  --frost-50: #f7fafc;
+  --glacier-100: #eaf4f7;
+  --ink-900: #0b1b2e;
+  --signal-cyan-500: #14c6de;
+  --cobalt-600: #3457ff;
+  --mint-400: #35e0a6;
+  --steel-200: #d3e1e8;
+  --steel-500: #7c93a3;
+  --danger-500: #ef4444;
+
+  /* shadcn semantic tokens mapped to Atlas palette (light storefront) */
+  --background: var(--frost-50);
+  --foreground: var(--ink-900);
+  --card: #ffffff;
+  --card-foreground: var(--ink-900);
+  --popover: #ffffff;
+  --popover-foreground: var(--ink-900);
+  --primary: var(--signal-cyan-500);
+  --primary-foreground: #04222b;
+  --secondary: var(--glacier-100);
+  --secondary-foreground: var(--ink-900);
+  --muted: var(--glacier-100);
+  --muted-foreground: var(--steel-500);
+  --accent: var(--glacier-100);
+  --accent-foreground: var(--ink-900);
+  --destructive: var(--danger-500);
+  --border: var(--steel-200);
+  --input: var(--steel-200);
+  --ring: var(--signal-cyan-500);
+  --chart-1: var(--signal-cyan-500);
+  --chart-2: var(--cobalt-600);
+  --chart-3: var(--mint-400);
+  --chart-4: #6aa9c4;
+  --chart-5: #9fbccb;
+  --radius: 0.875rem; /* inputs/cards baseline; buttons override to pill */
+  --sidebar: var(--glacier-100);
+  --sidebar-foreground: var(--ink-900);
+  --sidebar-primary: var(--signal-cyan-500);
+  --sidebar-primary-foreground: #04222b;
+  --sidebar-accent: #ffffff;
+  --sidebar-accent-foreground: var(--ink-900);
+  --sidebar-border: var(--steel-200);
+  --sidebar-ring: var(--signal-cyan-500);
 }
 
+/*
+  Dark = the admin "operator mode" shell (Design.md §5.6). We scope dark to the
+  admin surface via the `.dark` class on the admin layout, keeping the storefront
+  intentionally light. The `d` hotkey also toggles it for quick inspection.
+*/
 .dark {
-    --background: oklch(0.148 0.004 228.8);
-    --foreground: oklch(0.987 0.002 197.1);
-    --card: oklch(0.218 0.008 223.9);
-    --card-foreground: oklch(0.987 0.002 197.1);
-    --popover: oklch(0.218 0.008 223.9);
-    --popover-foreground: oklch(0.987 0.002 197.1);
-    --primary: oklch(0.925 0.005 214.3);
-    --primary-foreground: oklch(0.218 0.008 223.9);
-    --secondary: oklch(0.275 0.011 216.9);
-    --secondary-foreground: oklch(0.987 0.002 197.1);
-    --muted: oklch(0.275 0.011 216.9);
-    --muted-foreground: oklch(0.723 0.014 214.4);
-    --accent: oklch(0.275 0.011 216.9);
-    --accent-foreground: oklch(0.987 0.002 197.1);
-    --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.56 0.021 213.5);
-    --chart-1: oklch(0.872 0.007 219.6);
-    --chart-2: oklch(0.56 0.021 213.5);
-    --chart-3: oklch(0.45 0.017 213.2);
-    --chart-4: oklch(0.378 0.015 216);
-    --chart-5: oklch(0.275 0.011 216.9);
-    --sidebar: oklch(0.218 0.008 223.9);
-    --sidebar-foreground: oklch(0.987 0.002 197.1);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.987 0.002 197.1);
-    --sidebar-accent: oklch(0.275 0.011 216.9);
-    --sidebar-accent-foreground: oklch(0.987 0.002 197.1);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.56 0.021 213.5);
+  --background: var(--ink-900);
+  --foreground: var(--frost-50);
+  --card: #12293f;
+  --card-foreground: var(--frost-50);
+  --popover: #12293f;
+  --popover-foreground: var(--frost-50);
+  --primary: var(--signal-cyan-500);
+  --primary-foreground: #04222b;
+  --secondary: #16324a;
+  --secondary-foreground: var(--frost-50);
+  --muted: #16324a;
+  --muted-foreground: #9fb6c4;
+  --accent: #16324a;
+  --accent-foreground: var(--frost-50);
+  --destructive: #f87171;
+  --border: rgba(211, 225, 232, 0.14);
+  --input: rgba(211, 225, 232, 0.18);
+  --ring: var(--signal-cyan-500);
+  --chart-1: var(--signal-cyan-500);
+  --chart-2: var(--mint-400);
+  --chart-3: var(--cobalt-600);
+  --chart-4: #6aa9c4;
+  --chart-5: #9fbccb;
+  --sidebar: #081522;
+  --sidebar-foreground: var(--frost-50);
+  --sidebar-primary: var(--signal-cyan-500);
+  --sidebar-primary-foreground: #04222b;
+  --sidebar-accent: #12293f;
+  --sidebar-accent-foreground: var(--frost-50);
+  --sidebar-border: rgba(211, 225, 232, 0.14);
+  --sidebar-ring: var(--signal-cyan-500);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    }
+  }
   body {
     @apply bg-background text-foreground;
-    }
+    font-feature-settings: "ss01", "cv01";
+  }
   html {
     @apply font-sans;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  /* Signature Spec Strip — mono ribbon with tick-mark dividers (Design.md §2) */
+  .spec-strip {
+    font-family: var(--font-mono);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+  .spec-strip > * + * {
+    border-left: 1px solid var(--steel-200);
+  }
+
+  /* Aurora hero mesh — the one loud gradient on the storefront (Design.md §4) */
+  .aurora {
+    background:
+      radial-gradient(60% 80% at 15% 20%, rgba(20, 198, 222, 0.55), transparent 60%),
+      radial-gradient(55% 75% at 85% 15%, rgba(52, 87, 255, 0.5), transparent 55%),
+      radial-gradient(70% 90% at 70% 90%, rgba(53, 224, 166, 0.28), transparent 60%),
+      linear-gradient(120deg, #eaf4f7, #f7fafc);
+    background-size: 200% 200%;
+    animation: aurora-drift 24s ease-in-out infinite;
+  }
+  @keyframes aurora-drift {
+    0%,
+    100% {
+      background-position: 0% 50%;
     }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .text-gradient-brand {
+    background: linear-gradient(100deg, var(--signal-cyan-500), var(--cobalt-600));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora {
+    animation: none;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Cool, thin scrollbars to match the glacial aesthetic */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--steel-200) transparent;
 }
